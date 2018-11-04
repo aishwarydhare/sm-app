@@ -19,13 +19,9 @@ node {
       sh 'myfile.sh'
     }
     stage('Clean Docker test'){
-      sh 'docker rmi sm-app'
-    }
-    stage('Deploy'){
-      if(env.BRANCH_NAME == 'master'){
-        sh 'docker build -t aishwarydhare/docker-react -f Dockerfile.dev .'
-        sh 'docker run aishwarydhare/docker-react npm run test -- --coverage'
-      }
+      sh 'sudo docker stop sm-app'
+      sh 'sudo docker container rm sm-app'
+      sh 'sudo docker image rm myc'
     }
   }
   catch (err) {
