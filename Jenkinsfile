@@ -10,18 +10,18 @@ node {
       sh 'printenv'
     }
     stage('Build Docker'){
-     sh 'sudo docker build -t myc .'
+     sh 'docker build -t myc .'
     }
     stage('Docker run'){
-      sh 'sudo docker run -p 82:80 --name sm-app myc:latest'
+      sh 'docker run -p 82:80 --name sm-app myc:latest'
     }
     stage('Docker test'){
       sh 'sh myfile.sh'
     }
     stage('Clean Docker test'){
-      sh 'sudo docker stop sm-app'
-      sh 'sudo docker container rm sm-app'
-      sh 'sudo docker image rm myc'
+      sh 'docker stop sm-app'
+      sh 'docker container rm sm-app'
+      sh 'docker image rm myc'
     }
   }
   catch (err) {
