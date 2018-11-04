@@ -26,6 +26,11 @@ node {
   }
   catch (err) {
     throw err
+    stage('Clean Docker test'){
+      sh 'docker stop sm-app'
+      sh 'docker container rm sm-app'
+      sh 'docker image rm myc'
+    }
   }
 }
 
