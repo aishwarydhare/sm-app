@@ -13,7 +13,7 @@ node {
      sh 'docker build -t myc .'
     }
     stage('Docker run'){
-      sh 'docker run -p -d 82:80 --name sm-app myc:latest'
+      sh 'docker run -p 82:80 -d --name sm-app myc:latest'
     }
     stage('Docker test'){
       sh 'sh myfile.sh'
