@@ -16,7 +16,7 @@ node {
       sh 'sudo docker run -p 82:80 --name sm-app myc:latest'
     }
     stage('Docker test'){
-      sh 'myfile.sh'
+      sh 'sh myfile.sh'
     }
     stage('Clean Docker test'){
       sh 'sudo docker stop sm-app'
