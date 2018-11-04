@@ -1,0 +1,5 @@
+version: '3'
+  services:
+    smapp:
+      ports:
+        - "82:80"
